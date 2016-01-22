@@ -1,0 +1,22 @@
+<h1>Editing User</h1>
+
+<% if @errors %>
+	<% @errors.each do |error| %>
+	<p><%= error %></p>
+	<% end %>
+<% end %>
+
+<form action='/users/<%= @user.id %>' method='post'>
+	<input type='hidden' name='_method' value='put'>
+	<input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>
+	<p><label for='first_name'>First Name</label></p>
+	<p><input id='first_name' name='first_name' type='text' value='<%= @user.first_name %>'></p>
+	<p><label for='last_name'>Last Name</label></p>
+	<p><input id='last_name' name='last_name' type='text' value='<%= @user.last_name %>'></p>
+	<p><label for='email'>Email</label></p>
+	<p><input id='email' name='email' type='text' value='<%= @user.email %>'></p>
+	<p><label for='password'>Password</label></p>
+	<p><input id='password' name='password' type='password' value='<%= @user.password %>'></p>
+	<p><input type='submit' value='Update'></p>
+</form>
+<p><a href="/users">Back</a></p>
